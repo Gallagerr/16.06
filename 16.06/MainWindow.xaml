@@ -13,9 +13,6 @@
                 <MenuItem Header="Открыть" Name="open" Click="Open_Click"/>
                 <MenuItem Header="Сохранить" Name="save" Click="Save_Click"/>
             </MenuItem>
-            <MenuItem Header="Форматировать">
-                <MenuItem Header="Шрифт" Name="font" Click="Font_Click"/>
-            </MenuItem>
         </Menu>
         <RichTextBox Name="rtb" Margin="0,20,0,0" Background="White" >
             <FlowDocument>

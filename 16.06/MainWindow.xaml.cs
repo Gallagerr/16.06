@@ -36,6 +36,12 @@ namespace _16._06
       string filepath = @"Этот компьютер\Документы";
       FileStream file = new FileStream(filepath, FileMode.OpenOrCreate);
       new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Save(file, DataFormats.Text);
+      string file2 = $@"C:\Users\{Environment.UserName}\tmp";
+      using (var stream = File.Open(file2, FileMode.Create))
+      {
+        byte[] dataBytes = Encoding.UTF8.GetBytes(new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text);
+        stream.Write(dataBytes, 0, dataBytes.Length);
+      }
     }
     private void Create_Click(object sender, RoutedEventArgs e)
     {
@@ -57,11 +63,6 @@ namespace _16._06
       if (saveFileDialog.ShowDialog() == true)
         File.WriteAllText(saveFileDialog.FileName, new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text);
   
-    }
-
-    private void Font_Click(object sender, RoutedEventArgs e)
-    {
-
     }
   }
 }
